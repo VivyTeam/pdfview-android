@@ -31,5 +31,18 @@ dependencies {
     implementation "com.android.support:support-annotations:28.0.0"
 }
 
+task deleteJar(type: Delete) {
+    delete 'libs/jars/pdfviewlib.jar'
+}
+
+task createJar(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('libs/jars/')
+    include('classes.jar')
+    rename('classes.jar', 'pdfviewlib.jar')
+}
+
+createJar.dependsOn(deleteJar, build)
+
 apply from: "$rootDir/jcenter/maven-install.gradle"
 apply from: "$rootDir/jcenter/bintray.gradle"
