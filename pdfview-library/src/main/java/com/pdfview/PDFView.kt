@@ -36,14 +36,22 @@ class PDFView @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
         return this
     }
 
-    fun show() {
+    fun show(pdfViewCallback: PDFViewCallback) {
         val source = ImageSource.uri(mfile!!.path)
-        setRegionDecoderFactory { PDFRegionDecoder(view = this, file = mfile!!, scale = mScale) }
+        setRegionDecoderFactory {
+            val pdfRegionDecoder = PDFRegionDecoder(view = this, file = mfile!!, scale = mScale)
+            pdfViewCallback.onImageLoaded()
+            pdfRegionDecoder
+        }
         setImage(source)
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         this.recycle()
+    }
+
+    interface PDFViewCallback{
+        fun onImageLoaded()
     }
 }
