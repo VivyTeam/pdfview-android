@@ -1,5 +1,5 @@
 ext {
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.1'
 
     bintrayName = 'pdfview-android'
     libraryName = 'pdfview-android'
@@ -9,8 +9,8 @@ ext {
 
     libraryDescription = 'Small library to show PDF files in your native android application'
 
-    siteUrl = 'https://github.com/Dmitry-Borodin/pdfview'
-    gitUrl = 'https://github.com/Dmitry-Borodin/pdfview'
+    siteUrl = 'https://github.com/sulemanshakil/pdfview-android'
+    gitUrl = 'https://github.com/sulemanshakil/pdfview-android'
 
     developerId = 'Dmitry-Borodin'
     developerName = 'Dmitry Borodin'
