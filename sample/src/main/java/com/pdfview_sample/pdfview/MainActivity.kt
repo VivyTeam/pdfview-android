@@ -15,6 +15,5 @@ class MainActivity : AppCompatActivity() {
 
                 }
             })
-//        findViewById<PDFView>(R.id.activityMainPdfView).fromAsset("paper.pdf").show()
     }
 }

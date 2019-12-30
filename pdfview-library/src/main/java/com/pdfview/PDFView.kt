@@ -39,9 +39,7 @@ class PDFView @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
     fun show(pdfViewCallback: PDFViewCallback) {
         val source = ImageSource.uri(mfile!!.path)
         setRegionDecoderFactory {
-            val pdfRegionDecoder = PDFRegionDecoder(view = this, file = mfile!!, scale = mScale)
-            pdfViewCallback.onImageLoaded()
-            pdfRegionDecoder
+             PDFRegionDecoder(view = this, file = mfile!!, scale = mScale, pdfViewCallback = pdfViewCallback)
         }
         setImage(source)
     }

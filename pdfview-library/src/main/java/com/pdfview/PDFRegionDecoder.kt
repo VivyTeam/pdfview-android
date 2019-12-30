@@ -13,7 +13,9 @@ import java.io.File
 internal class PDFRegionDecoder(private val view: PDFView,
                                 private val file: File,
                                 private val scale: Float,
-                                @param:ColorInt private val backgroundColorPdf: Int = Color.WHITE) : ImageRegionDecoder {
+                                @param:ColorInt private val backgroundColorPdf: Int = Color.WHITE,
+                                private val pdfViewCallback: PDFView.PDFViewCallback
+) : ImageRegionDecoder {
 
     private lateinit var descriptor: ParcelFileDescriptor
     private lateinit var renderer: PdfRenderer
@@ -33,6 +35,7 @@ internal class PDFRegionDecoder(private val view: PDFView,
             view.setMinimumScaleType(SCALE_TYPE_CENTER_INSIDE)
         }
         page.close()
+        pdfViewCallback.onImageLoaded()
         return Point(pageWidth,pageHeight * renderer.pageCount)
     }
 
